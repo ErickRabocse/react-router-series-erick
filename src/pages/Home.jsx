@@ -63,18 +63,16 @@ const Home = () => {
                     alt="show poster"
                     className="card-img-top show_poster"
                   />
-                  <Link
-                    className="card-name"
-                    to={`/show/${show.id || show?.show?.id}`}
-                  >
-                    {show?.name || show?.show?.name}
-                  </Link>
+                  <p className="card-name">{show?.name || show?.show?.name}</p>
                   <p className="card-rating">
                     ⭐️ {show?.rating?.average || show?.show?.rating?.average}
                   </p>
-                  <a href="#" className="btn btn-primary">
+                  <Link
+                    to={`/show/${show.id || show?.show?.id}`}
+                    className="btn btn-primary"
+                  >
                     View more
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
