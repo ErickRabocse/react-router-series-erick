@@ -1,14 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./navbar.css";
 
 const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <NavLink className="navbar-brand" to="#">
-            TV Maze
+        <div className=" logo-section">
+          <NavLink className="navbar-brand" to="/">
+            <img
+              className="logo"
+              id="logo"
+              src="https://static.tvmaze.com/images/tvm-header-logo.png"
+              alt="TVmaze"
+              title="Keep track of your shows. TV calendar, TV watchlist, TV information database, REST TV API and more."
+            />
           </NavLink>
+        </div>
+        <div className="container-fluid">
           <button
             className="navbar-toggler"
             type="button"

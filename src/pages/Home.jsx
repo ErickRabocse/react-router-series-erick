@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
@@ -31,8 +32,6 @@ const Home = () => {
   return (
     <>
       <div className="container">
-        <div>Home</div>
-
         <form className="d-flex my-2" role="search">
           <input
             className="form-control me-2"
@@ -64,9 +63,12 @@ const Home = () => {
                     alt="show poster"
                     className="card-img-top show_poster"
                   />
-                  <div className="card-name">
+                  <Link
+                    className="card-name"
+                    to={`/show/${show.id || show?.show?.id}`}
+                  >
                     {show?.name || show?.show?.name}
-                  </div>
+                  </Link>
                   <p className="card-rating">
                     ⭐️ {show?.rating?.average || show?.show?.rating?.average}
                   </p>
