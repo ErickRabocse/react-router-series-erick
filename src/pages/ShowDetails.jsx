@@ -11,6 +11,7 @@ const ShowDetails = () => {
   const [show, setShows] = useState(null);
   const [episodes, setEpisodes] = useState([]);
   const [chars, setChars] = useState([]);
+  const [seasons, setSeasons] = useState([]);
 
   useEffect(() => {
     fetch(`https://api.tvmaze.com/shows/${id}`)
@@ -30,6 +31,12 @@ const ShowDetails = () => {
       .then((data) => setChars(data))
       .catch((err) => console.error(err));
   }, []);
+  useEffect(() => {
+    fetch(`https://api.tvmaze.com/shows/${id}/seasons`)
+      .then((res) => res.json())
+      .then((data) => setSeasons(data))
+      .catch((err) => console.error(err));
+  });
 
   let cleanText = show?.summary.replace(/<\/?[^>]+(>|$)/g, "");
 
@@ -77,8 +84,22 @@ const ShowDetails = () => {
         {/* HERE GO THE SEASONS / EPISODES */}
         <div className="col-lg-9 col-md-12">
           <h4 className="text-primary">Seasons</h4>
+          {seasons.map((el) => (
+            <>
+              <div>
+                <h5>Season {el.number}</h5>
+              </div>
+              <div className="episodes-container">
+                {episodes
+                  .filter((ep) => ep.season == `${el.number}`)
+                  .map((ep) => (
+                    <p key={ep?.id}> - {ep?.name}</p>
+                  ))}
+              </div>
+            </>
+          ))}
 
-          <div className="accordion" id="accordionPanelsStayOpenExample">
+          {/* <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
               <h2 className="accordion-header">
                 <button
@@ -208,8 +229,8 @@ const ShowDetails = () => {
                     ))}
                 </div>
               </div>
-            </div>
-          </div>
+            </div> 
+           </div> */}
         </div>
       </div>
     </div>
