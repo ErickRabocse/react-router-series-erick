@@ -40,6 +40,19 @@ const ShowDetails = () => {
 
   let cleanText = show?.summary.replace(/<\/?[^>]+(>|$)/g, "");
 
+  // const handleShow = () => {
+  //   const [showResult, setShowResult] = useState(false);
+  //   const onClick = () => setShowResult(true);
+  //   return (
+  //     <div>
+  //       <input type="submit" onClick={onClick} />
+  //       {showResult
+  //         ? div.episodes - container.style.display("block")
+  //         : div.episodes - container.style.display("none")}
+  //     </div>
+  //   );
+  // };
+
   return (
     <div className="container text-center mt-3">
       {/* * * * * * FIRST ROW * * * * * */}
@@ -82,155 +95,27 @@ const ShowDetails = () => {
           ))}
         </div>
         {/* HERE GO THE SEASONS / EPISODES */}
-        <div className="col-lg-9 col-md-12">
-          <h4 className="text-primary">Seasons</h4>
+        <div className="col-lg-9 col-md-12 overflow-auto my-4 characters-container">
+          <h4 className="text-primary">Episodes</h4>
           {seasons.map((el) => (
             <>
               <div>
-                <h5>Season {el.number}</h5>
+                <h5 className="p-3 mb-2 bg-dark text-white">
+                  Season {el.number}
+                </h5>
               </div>
               <div className="episodes-container">
                 {episodes
                   .filter((ep) => ep.season == `${el.number}`)
                   .map((ep) => (
-                    <p key={ep?.id}> - {ep?.name}</p>
+                    <p key={ep?.id}>
+                      <strong>{ep?.number}</strong> - {ep?.name}{" "}
+                      <em>(Air date: {ep?.airdate})</em>
+                    </p>
                   ))}
               </div>
             </>
           ))}
-
-          {/* <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseOne"
-                  aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne"
-                >
-                  Season 1
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseOne"
-                className="accordion-collapse collapse show"
-              >
-                <div className="accordion-body">
-                  {episodes
-                    .filter((ep) => ep.season === 1)
-                    .map((ep) => (
-                      <p key={ep?.id}>- {ep?.name}</p>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseTwo"
-                >
-                  Season 2
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseTwo"
-                className="accordion-collapse collapse"
-              >
-                <div className="accordion-body">
-                  {episodes
-                    .filter((ep) => ep.season === 2)
-                    .map((ep) => (
-                      <p key={ep?.id}>- {ep?.name}</p>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
-                >
-                  Season 3
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                className="accordion-collapse collapse"
-              >
-                <div className="accordion-body">
-                  {episodes
-                    .filter((ep) => ep.season === 3)
-                    .map((ep) => (
-                      <p key={ep?.id}>- {ep?.name}</p>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
-                >
-                  Season 4
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                className="accordion-collapse collapse"
-              >
-                <div className="accordion-body">
-                  {episodes
-                    .filter((ep) => ep.season === 4)
-                    .map((ep) => (
-                      <p key={ep?.id}>- {ep?.name}</p>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
-                >
-                  Season 5
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                className="accordion-collapse collapse"
-              >
-                <div className="accordion-body">
-                  {episodes
-                    .filter((ep) => ep.season === 5)
-                    .map((ep) => (
-                      <p key={ep?.id}>- {ep?.name}</p>
-                    ))}
-                </div>
-              </div>
-            </div> 
-           </div> */}
         </div>
       </div>
     </div>
