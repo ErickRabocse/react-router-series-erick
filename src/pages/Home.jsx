@@ -63,7 +63,9 @@ const Home = () => {
                     alt="show poster"
                     className="card-img-top show_poster"
                   />
-                  <p className="card-name">{show?.name || show?.show?.name}</p>
+                  <h4 className="card-name">
+                    {show?.name || show?.show?.name}
+                  </h4>
                   <p className="card-rating">
                     ⭐️ {show?.rating?.average || show?.show?.rating?.average}
                   </p>
