@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className=" logo-section">
+        <div className="container-fluid sm-12 d-flex justify-content-center my-2 logo-section">
           <NavLink className="navbar-brand" to="/">
             <img
               className="logo"
